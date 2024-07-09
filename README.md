@@ -56,6 +56,14 @@ Install the requirements:
 pip install -r requirements.txt
 ```
 
+#### .env
+
+Create a file called .env in the root directory. Use the .env.example as an example. Fill it with your project and dataset, the same you configured in the gcloud setup. After filling the .env correctly, run the following command to load the variables into dbt:
+
+```bash
+source .env
+```
+
 #### Authentication
 
 To check your authentication:

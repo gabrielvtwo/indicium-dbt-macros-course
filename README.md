@@ -22,6 +22,8 @@ BigQuery has a nice free sandbox that can be used. Check [Google's documentation
 
 To authenticate with your project, I recommend using OAuth authentication. For that, you will need to install gcloud and set it up. To learn how to do that, check dbt documentation [here](https://docs.getdbt.com/docs/core/connect-data-platform/bigquery-setup#oauth-via-gcloud) and [here](https://docs.getdbt.com/docs/core/connect-data-platform/bigquery-setup#local-oauth-gcloud-setup).
 
+**PS: Honestly, any dbt project will do... if you have your own dbt sandbox in your own Data Warehouse, should be easy to adapt your macros to run there. It is even a nice challenge!**
+
 ### Usage
 
 #### Clone

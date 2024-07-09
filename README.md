@@ -3,7 +3,7 @@
 # dbt Macros
 > How to extract value from this dbt feature?
 
-This is the material for the Indicium Training dbt Macros course. In this repository, we have a selection of well commented macros to explore and study jinja and macros and how to extract value from it in a real project.
+This is the material for the Indicium Training dbt Macros course. In this repository, we have a selection of macros to explore and study jinja and macros and how to extract value from it in a real project.
 
 Enroll the full course [in the training indicium page](https://training.indicium.tech/enrol/index.php?id=429).
 

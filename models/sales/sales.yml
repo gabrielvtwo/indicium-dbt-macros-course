@@ -1,0 +1,7 @@
+version: 2
+
+groups:
+  - name: sales
+    owner: 
+      name: Angelina
+      email: angelina

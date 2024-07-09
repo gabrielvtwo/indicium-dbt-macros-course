@@ -1,0 +1,22 @@
+
+** (nemo:639846): WARNING **: 15:02:08.846: Current gtk theme is not known to have nemo support (Adwaita-dark) - checking...
+
+** (nemo:639846): WARNING **: 15:02:08.877: The theme appears to have no nemo support.  Adding some...
+ImportError: could not import gobject (error was: ModuleNotFoundError("No module named 'gi'"))
+
+** (nemo:639846): WARNING **: 15:02:08.885: pygobject initialization failed
+
+** (nemo:639846): WARNING **: 15:02:08.885: nemo_python_init_python failed
+Nemo-Share-Message: 15:02:09.092: Called "net usershare info" but it failed: 'net usershare' returned error 255: net usershare: cannot open usershare directory /var/lib/samba/usershares. Error No such file or directory
+Please ask your system administrator to enable user sharing.
+
+
+(nemo:639846): GLib-GObject-WARNING **: 15:02:32.134: g_object_weak_unref: couldn't find weak ref 0x7f39a8d8b240(0x558b69f98550)
+
+(nemo:639846): Gtk-CRITICAL **: 15:02:32.134: gtk_widget_destroy: assertion 'GTK_IS_WIDGET (widget)' failed
+
+(nemo:639846): GLib-GObject-WARNING **: 15:02:32.134: g_object_weak_unref: couldn't find weak ref 0x7f39a8d8b240(0x558b69f98550)
+[93m[WARN 13:51:35.479983][0m [Preferences:192] '/usr/share/plank/themes/Default/dock.theme' is read-only!
+[93m[WARN 17:15:01.225011][0m [PositionManager:689] Without a draw_value there is trouble ahead for 'Guake Preferences'
+[93m[WARN 17:15:01.225045][0m [PositionManager:689] Without a draw_value there is trouble ahead for 'Guake Preferences'
+[93m[WARN 18:55:31.250950][0m [AbstractMain:42] Caught signal (15), exiting

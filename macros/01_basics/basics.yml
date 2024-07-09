@@ -1,0 +1,6 @@
+version: 2
+
+macros:
+  - name: hello_world
+    description: >
+      This macro will print a hello world message, isnt it cool?

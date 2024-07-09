@@ -1,0 +1,19 @@
+version: 2
+
+sources:
+  - name: trusted_northwind
+    database: "{{ env_var('DBT_BQ_PROJECT') }}"
+    schema: "{{ env_var('DBT_BQ_DATASET') }}"
+    description: >
+      This is a source
+
+    tables:
+      - name: contracts
+        freshness:
+          warn_after:
+            count: 100
+            period: day
+          error_after:
+            count: 200
+            period: day
+        loaded_at_field: insert_date

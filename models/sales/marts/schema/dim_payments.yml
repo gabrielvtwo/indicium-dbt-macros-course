@@ -1,0 +1,15 @@
+
+version: 2
+
+models:
+  - name: dim_payments
+    description: "A starter dbt model"
+    meta:
+      owner: Maria
+      steward: Kevin
+      has_pii: false
+    columns:
+      - name: payment_id
+        description: "The primary key for this table"
+      - name: amount
+        description: "The amount paid"

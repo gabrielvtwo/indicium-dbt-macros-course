@@ -1,0 +1,23 @@
+macros_training:
+  target: dev
+  outputs:
+    dev:
+      dataset: "{{ env_var('DBT_BQ_DATASET') }}"
+      job_execution_timeout_seconds: 100000
+      job_retries: 1
+      location: US
+      method: oauth
+      priority: interactive
+      project: "{{ env_var('DBT_BQ_PROJECT') }}"
+      threads: 1
+      type: bigquery
+    prod:
+      dataset: prod
+      job_execution_timeout_seconds: 100000
+      job_retries: 1
+      location: US
+      method: oauth
+      priority: interactive
+      project: "{{ env_var('DBT_BQ_PROJECT') }}"
+      threads: 1
+      type: bigquery

@@ -1,0 +1,16 @@
+
+version: 2
+
+models:
+  - name: dim_contracts
+    description: "A starter dbt model"
+    meta:
+      owner: Lilian
+      steward: James
+      has_pii: false
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        data_tests:
+          - unique
+          - not_null

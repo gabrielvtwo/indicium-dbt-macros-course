@@ -1,1 +1,2 @@
 dbt-bigquery==1.8.2
+altimate-datapilot-cli==0.0.13

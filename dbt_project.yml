@@ -72,6 +72,19 @@ seeds:
         nucontrato: string
         name: string
         insert_date: timestamp
+    transactions:
+      +column_types:
+        transactionid: string
+        value: float
+        user: string
+        var001: float
+        var002: float
+        var003: float
+        var004: float
+        var005: float
+        var006: float
+        var007: float
+        transdate: datetime
 
 on-run-end:
   - "{{ log_results(results) }}"

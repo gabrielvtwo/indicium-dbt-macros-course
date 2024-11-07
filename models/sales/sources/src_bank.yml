@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: trusted_bank
+    database: "{{ env_var('DBT_BQ_PROJECT') }}"
+    schema: "{{ env_var('DBT_BQ_DATASET') }}"
+    description: >
+      This is a source
+
+    tables:
+      - name: transactions

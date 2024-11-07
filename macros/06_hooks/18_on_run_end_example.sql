@@ -17,11 +17,17 @@
         {{ log("========== Begin Summary ==========", info=True) }}
         -- So for each result in the run_results.json
         {% for res in results -%}
+            -- Let's calculate the cost beforehand
+            {% set query_cost = res.adapter_response.bytes_billed | float / 109951160 * 5 %}
+
             -- We are printing a summary
             {% set summary -%}
                 - node: {{ res.node.unique_id }}
                 - status: {{ res.status }}
                 - message: {{ res.message }}
+                - job_id: {{ res.adapter_response.job_id }}
+                - slot_ms: {{ res.adapter_response.slot_ms }}
+                - query_cost: {{ '%0.2f' % query_cost ~ " USD"}} 
             {%- endset %}
 
             {{ log(summary, info=True) }}

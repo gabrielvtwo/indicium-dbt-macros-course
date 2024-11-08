@@ -10,6 +10,7 @@ profile: 'macros_training'
 
 vars:
   payload_bucket: v2_training_example
+  metadata_dataset: dbt_metadata
 
 # These configurations specify where dbt should look for different types of files.
 # The `model-paths` config, for example, states that models in this project can be
@@ -35,8 +36,9 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   macros_training:
     # Config indicated by + and applies to all files under models/example/
-    # +post-hook: "{{ payload_publisher() }}"
-    +post-hook: "{{ post_hook_example() }}"
+    +post-hook: 
+      - "{{ payload_publisher() }}"
+      # - "{{ post_hook_example() }}"
     crm:
       +group: crm
       marts:
@@ -88,3 +90,4 @@ seeds:
 
 on-run-end:
   - "{{ log_results(results) }}"
+  - "{{ execution_metadata_collector_reworked(results) }}"

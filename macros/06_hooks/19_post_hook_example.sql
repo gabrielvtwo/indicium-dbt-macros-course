@@ -8,10 +8,12 @@
         Check dbt_project.yml post-hook to see how we call this macro.
     */
 
-    {% do log(this.name, info=true) %}
+    {% if execute %}
+        {% do log(this.name, info=true) %}
 
-    -- Ignore this part below!
-    -- As we added comments, bigquery requires a query somehow.
-    select 1 = 1
+        -- Ignore this part below!
+        -- As we added comments, bigquery requires a query somehow.
+        select 1 = 1
+    {% endif %}
 
 {% endmacro %}

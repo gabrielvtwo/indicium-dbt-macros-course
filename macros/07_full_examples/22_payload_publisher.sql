@@ -1,6 +1,6 @@
 {% macro payload_publisher() %}
 
-    /* 
+    {#-
         This is an example of how we can use macros to perform more architectural designs.
 
         In this example, we are making dbt part of a pubsub publisher architecture.
@@ -25,27 +25,31 @@
 
         A lot of nice stuff is happening here, so check the comments and try to
         make sense of the code logic.
-    */
+    -#}
 
 
     {% if execute %}
-    -- First we set the date for now, by using the datetime python module.
+    {#- First we set the date for now, by using the datetime python module. -#}
     {% set now = modules.datetime.datetime.now().strftime("%d%m%Y_%H%M%S") %}
-        -- We are looping through items in graph.nodes
+        {#- We are looping through items in graph.nodes -#}
         {% for node in graph.nodes.values() -%}
-            -- We are filtering for the node in the context of post hook, which is 'this'
+            {#- We are filtering for the node in the context of post hook, which is 'this' -#}
             {%- if node.name == this.name -%}
-                -- We are setting the payload
-                -- Notice that we are using replace() jinja filter to deal with Undefined
+                {#-
+                    We are setting the payload
+                    Notice that we are using replace() jinja filter to deal with Undefined
+                -#}
                 {% set payload = {
                     this.name: {
                         'owner': node.meta.owner | replace('Undefined', 'null')
                         , 'identifier': this.database ~ '.' ~ this.schema ~ '.' ~ this.identifier
                     }
                 } %}
-                -- Now we are calling a export_to_gcs macro that is defined below.
-                -- Check how we are using a var from dbt_project.yml to set the bucket
-                -- Go to dbt_projecy.yml to see how this was defined.
+                {#-
+                    Now we are calling a export_to_gcs macro that is defined below.
+                    Check how we are using a var from dbt_project.yml to set the bucket
+                    Go to dbt_projecy.yml to see how this was defined.
+                -#}
                 {% do export_to_gcs(
                     export_data = payload[this.name]
                     , bucket = var('payload_bucket')
@@ -58,15 +62,19 @@
 
 {% endmacro %}
 
--- This is the other macro, for exporting to GCS.
+{#- This is the other macro, for exporting to GCS. -#}
 {% macro export_to_gcs(export_data, bucket, datetime, name) %}
-    -- This is a good showcase of the functional aspect of jinja in dbt.
-    -- Notice how we are making two functions, and calling one inside the other.
+    {#-
+        This is a good showcase of the functional aspect of jinja in dbt.
+        Notice how we are making two functions, and calling one inside the other.
+    -#}
 
     {% if execute %}
 
-        -- This will set the export query
-        -- Notice how we are using variables to fill the gaps
+        {#-
+            This will set the export query
+            Notice how we are using variables to fill the gaps
+        -#}
         {% set export %}
 
             export data
@@ -82,10 +90,10 @@
 
         {% endset %}
 
-        -- We run the export query
+        {#- We run the export query -#}
         {% do run_query(export) %}
 
-        -- And log it!
+        {#- And log it! -#}
         {% do log("Payload for " ~ this.name ~ " exported to GCS!") %}
 
     {%- endif -%}
